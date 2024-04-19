@@ -18,8 +18,8 @@ class GS2 extends Gamestate {
     mcClone = new NPC("mcClone",  rosalieImg, null,new PVector(width/2, height/2), 25, 25, 255);//mid
     rosalie.buddy = willow; willow.buddy = rosalie;
     
-    mainDoorGS1 = new Door(new PVector(width/2, height*.025), 101, "H");
-    securityDoorGS1 = new Door(new PVector(width*.98, height*.3), 102, "V");
+    mainDoor = new Door(new PVector(width/2, height*.025), 101, "H");
+    securityDoor = new Door(new PVector(width*.98, height*.3), 102, "V");
     
     hotelFloor = loadImage("hotelfloor.png");
     hotelFloor.resize(width, height);
@@ -34,8 +34,8 @@ class GS2 extends Gamestate {
     centerRoom.objects.add(nebula);
     centerRoom.objects.add(angeline);
     centerRoom.objects.add(sasha);
-    centerRoom.objects.add(mainDoorGS1);
-    centerRoom.objects.add(securityDoorGS1);
+    centerRoom.objects.add(mainDoor);
+    centerRoom.objects.add(securityDoor);
 
     rooms.add(centerRoom);
     currentRoom = centerRoom;

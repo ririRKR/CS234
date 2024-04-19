@@ -1,6 +1,6 @@
 class NPC extends Object {
-  NPC(String nameIn, PImage spriteIn, PImage talkImgIn, PVector startPos, int dialogueStartIn, int dialogueEndIn, color fillIn) {
-    super("NPC", startPos);
+  NPC(String type, String nameIn, PImage spriteIn, PImage talkImgIn, PVector startPos, int dialogueStartIn, int dialogueEndIn, color fillIn) {
+    super(type, startPos);
     fill = fillIn;
     dialogueStart = dialogueStartIn;
     dialogueEnd = dialogueEndIn;

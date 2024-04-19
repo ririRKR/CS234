@@ -6,7 +6,7 @@ ArrayList<Object> GS0objects;
 ArrayList<Gamestate> Gamestates;
 int cgs; // current game state
 NPC rosalie, emily, thalia, willow, magnolia, nebula, angeline, sasha, mcClone;
-Door mainDoorGS1, securityDoorGS1;
+Door mainDoor, securityDoor;
 Door hotelRoom1, hotelRoom2, hotelRoom3;
 Room centerRoom, rightRoom;
 GS0 gs0; GS1 gs1; GS2 gs2;
@@ -14,11 +14,7 @@ boolean allClosed;
 PImage rightArrow;
 void setup() {
   size(900, 900);
-  pagesb1 = new ArrayList<Page>();
-  pagesb1.add(new Page("pg1pg1pg1pg11pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pg1pgg11pg1pg1pg1pg1ppg1pg1pgpg1pg1pg1pg1"));
-  pagesb1.add(new Page("pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pgpg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page pg 2 page 2 pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page 2pg 2 page  2 page 2"));
-
-  //b1 = new Book(pagesb1, new PVector(width*2/3, height/2));
+  
   mc = new Player(new PVector(width/2, height/2));
   
   GS0objects = new ArrayList<Object>();
@@ -34,11 +30,7 @@ void setup() {
   Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2);
   cgs = 1;
   allClosed = true;
-  
-  
   //display the .gamestate.get (last line), new variable for last gamestate
-
-
 }
 
 void draw() {
@@ -61,7 +53,6 @@ void mouseClicked() {
     if (o.type == "BOOK" && o.opened == true) { //if the book is opened
       if (mouseX>width/2&& mouseX<width*3/4) { // if mouse is on right side of book
         o.incPageNumber(); // next page
-       // println(b1.pageNumber);
       } else if (mouseX>width*1/4&& mouseX<width/2) { //if mouse is on left side of book
         o.decPageNumber(); // previous page
       }
@@ -119,13 +110,6 @@ void keyPressed() {
       }
     }
   }
-
-  if (key == TAB) {
-    for (Object o : Gamestates.get(cgs).currentRoom.objects) {
-     // o.opened = false;
-      //notOpened = true; //might need might not
-    }
-  }
 }
 
 void checkDistance() {
@@ -133,11 +117,8 @@ void checkDistance() {
     if (dist(mouseX, mouseY, o.pos.x, o.pos.y)<30) {
       if (o.getType().equals("BOOK") || o.getType().equals("NPC")) {
         o.opened = true;
-        //if(o.buddy!=null) o.buddy.opened = true;
-        //o.beenClicked = true;
         o.pageNumber = 0;
       }
-      //println("TOUCH!");
       break;
     }
   }
@@ -147,7 +128,6 @@ void changeGS() {
   if (cgs==0 && Gamestates.get(cgs).dialogueNumber == 6) {
     cgs++;
   } else if(cgs!=0 && Gamestates.get(cgs).checkTalked() == true){
-    println("Checktalked = true");
     cgs++;
   }
 }
