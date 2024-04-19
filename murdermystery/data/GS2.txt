@@ -1,0 +1,8 @@
+ = 
+mcT=Huh? What’s this on the ground?
+mcT=A hotel key?
+mcT=It’s getting late. I should see if this key opens a room so I can sleep.
+ = 
+mcT=I need a key to open this door.
+mcT=It opened!
+ = 
