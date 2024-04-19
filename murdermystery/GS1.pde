@@ -26,26 +26,26 @@ class GS1 extends Gamestate {
     hotelFloor = loadImage("hotelfloor.png");
     hotelFloor.resize(width, height);
     
-    centerGS1Room = new Room("Lobby", hotelFloor, null, null, null, null);
-    rightGS1Room = new Room("Hotel Rooms", hotelFloor, centerGS1Room, null, null, null);
-    centerGS1Room.right = rightGS1Room;
+    centerRoom = new Room("Lobby", hotelFloor, null, null, null, null);
+    rightRoom = new Room("Hotel Rooms", hotelFloor, centerRoom, null, null, null);
+    centerRoom.right = rightRoom;
 
-    centerGS1Room.objects.add(rosalie);
-    rightGS1Room.objects.add(emily);
-    centerGS1Room.objects.add(thalia);
-    centerGS1Room.objects.add(willow);
-    centerGS1Room.objects.add(magnolia);
-    centerGS1Room.objects.add(nebula);
-    centerGS1Room.objects.add(angeline);
-    centerGS1Room.objects.add(sasha);
-    centerGS1Room.objects.add(mainDoorGS1);
-    centerGS1Room.objects.add(securityDoorGS1);
+    centerRoom.objects.add(rosalie);
+    rightRoom.objects.add(emily);
+    centerRoom.objects.add(thalia);
+    centerRoom.objects.add(willow);
+    centerRoom.objects.add(magnolia);
+    centerRoom.objects.add(nebula);
+    centerRoom.objects.add(angeline);
+    centerRoom.objects.add(sasha);
+    centerRoom.objects.add(mainDoorGS1);
+    centerRoom.objects.add(securityDoorGS1);
 
-    rooms.add(centerGS1Room);
-    rooms.add(rightGS1Room);
+    rooms.add(centerRoom);
+    rooms.add(rightRoom);
 
     //left, right, up, down
-    currentRoom = centerGS1Room;
+    currentRoom = centerRoom;
   }
 
   void display() {

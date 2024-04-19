@@ -24,21 +24,21 @@ class GS2 extends Gamestate {
     hotelFloor = loadImage("hotelfloor.png");
     hotelFloor.resize(width, height);
     
-    centerGS2Room = new Room("Lobby", hotelFloor, null, null, null, null);
+    centerRoom = new Room("Lobby", hotelFloor, null, null, null, null);
 
-    centerGS2Room.objects.add(rosalie);
-    centerGS2Room.objects.add(emily);
-    centerGS2Room.objects.add(thalia);
-    centerGS2Room.objects.add(willow);
-    centerGS2Room.objects.add(magnolia);
-    centerGS2Room.objects.add(nebula);
-    centerGS2Room.objects.add(angeline);
-    centerGS2Room.objects.add(sasha);
-    centerGS2Room.objects.add(mainDoorGS1);
-    centerGS2Room.objects.add(securityDoorGS1);
+    centerRoom.objects.add(rosalie);
+    centerRoom.objects.add(emily);
+    centerRoom.objects.add(thalia);
+    centerRoom.objects.add(willow);
+    centerRoom.objects.add(magnolia);
+    centerRoom.objects.add(nebula);
+    centerRoom.objects.add(angeline);
+    centerRoom.objects.add(sasha);
+    centerRoom.objects.add(mainDoorGS1);
+    centerRoom.objects.add(securityDoorGS1);
 
-    rooms.add(centerGS2Room);
-    currentRoom = centerGS2Room;
+    rooms.add(centerRoom);
+    currentRoom = centerRoom;
   }
 
   void display() {

@@ -20,5 +20,4 @@ class GS0 extends Gamestate {
   }
   
   Room baseRoom;
- // ArrayList<Object> objs;
 }

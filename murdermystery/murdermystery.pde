@@ -8,8 +8,7 @@ int cgs; // current game state
 NPC rosalie, emily, thalia, willow, magnolia, nebula, angeline, sasha, mcClone;
 Door mainDoorGS1, securityDoorGS1;
 Door hotelRoom1, hotelRoom2, hotelRoom3;
-Room centerGS1Room, rightGS1Room, leftRoom, upRoom, downRoom;
-Room centerGS2Room, rightGS2Room;
+Room centerRoom, rightRoom;
 GS0 gs0; GS1 gs1; GS2 gs2;
 boolean allClosed;
 PImage rightArrow;
@@ -205,25 +204,3 @@ boolean getThinking(String input){
   if(input.equals("mcT")) return true;
   else return false;
 }
-
-
-
-/*public List<Dialogue> loadDialogue(String filename) throws IOException {
- List<String> lines = Files.readAllLines(Paths.get(filename)); // Assuming file reading
- 
- List<Dialogue> dialogues = new ArrayList<>();
- for (String line : lines) {
- String[] parts = line.split("=");
- if (parts.length != 2) {
- System.out.println("Invalid line format: " + line);
- continue; // Skip invalid lines
- }
- 
- String name = parts[0].equals("mc") ? "A" : parts[0].equals("p2") ? "B" : "";
- String speech = parts[1];
- dialogues.add(new Dialogue(name, speech));
- }
- 
- return dialogues;
- }
- */
