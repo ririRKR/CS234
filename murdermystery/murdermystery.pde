@@ -28,7 +28,7 @@ void setup() {
   gs2 = new GS2(mc, loadDialogue("GS1.txt"));
   //gs3 = new GS3(mc, loadDialogue("GS2.txt"));
   Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2);
-  cgs = 1;
+  cgs = 2;
   allClosed = true;
   //display the .gamestate.get (last line), new variable for last gamestate
 }

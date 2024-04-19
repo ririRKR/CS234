@@ -1,6 +1,6 @@
 cen=Welcome Detective
-cen=A murder has occurred.
-cen=Charlena Bullert is the name of the deceased.
+cen=You have been tasked with a mission.
+cen=A crime is going to be committed in this hotel.
 cen=You and the suspects will be trapped in the hotel until you solve the crime.
 cen=Good luck Detective...
 cen=The safety of these people lies in your hands.
