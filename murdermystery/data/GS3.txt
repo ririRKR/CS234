@@ -1,0 +1,11 @@
+mcT=Ugh…I’m so tired.
+mcT=Investigating takes a lot out of me.
+cen=Great job on your first day Detective.
+cen=You introduced yourself to the potential suspects.
+cen=In case you haven’t noticed, the murder hasn’t happened yet.
+cen=One of your newfound friends…
+cen=Will be the one to commit the crime…
+cen=And one of your newfound friends…
+cen=Will be the victim.
+cen=Good luck Detective.
+cen=The safety of these people lies in your hands.

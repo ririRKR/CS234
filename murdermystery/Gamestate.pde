@@ -7,6 +7,7 @@ class Gamestate {
     dialogues = dialogueArrayListIn;
     rooms = new ArrayList<Room>();
     doneTalking = false;
+    peopleTalked = 0;
   }
 
   void display() {
@@ -49,7 +50,7 @@ class Gamestate {
 
   void openIt() {
     for (Object o : currentRoom.objects) {
-      if (o.opened) o.open();
+      if (o.opened) o.open(); 
     }
   }
 
@@ -57,7 +58,8 @@ class Gamestate {
   String rollingText(Dialogue dIn) {
     if (dIn.thinking) {
       fill(#C6EEF5);
-    } else fill(255);
+    } else if(dIn.getNamee().equals(" ")) fill(#84988D);
+    else fill(255);
     String speech = dIn.getSpeech();
     if (frameCount%2==0 && current<speech.length()) {
       current++;
@@ -69,14 +71,8 @@ class Gamestate {
 
 
   void displayTalker(NPC nIn) {
-    if(nIn.talkImg!=null){
-      imageMode(CENTER);
-      image(nIn.talkImg, width*.1, height*3/4);
-      imageMode(CORNER);
-    }
-    else{
     fill(nIn.fill);
-    circle(width*.1, height*3/4, width*100/900);}
+    circle(width*.1, height*3/4, width*100/900);
     fill(255);
     textSize(50);
     if (!nIn.name.substring(0, 1).equals("m") && !nIn.name.substring(0, 1).equals("x")) text(nIn.name.substring(0, 1), width*.1, height*.77);
@@ -168,6 +164,7 @@ class Gamestate {
   ArrayList<Room> rooms;
   Room currentRoom;
   boolean doneTalking;
+  int peopleTalked;
 }
 
 /*

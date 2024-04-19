@@ -3,8 +3,8 @@ class GS0 extends Gamestate {
     super(playerIn, dialogueArrayListIn);
     current = 0;
    
-    baseRoom = new Room("Intro", null, null, null, null, null);
-    currentRoom = baseRoom;
+    centerRoom = new Room("Intro", null, null, null, null, null);
+    currentRoom = centerRoom;
   }
 
   void display() {
@@ -18,6 +18,5 @@ class GS0 extends Gamestate {
     background(0);
     p.display();
   }
-  
-  Room baseRoom;
+ 
 }

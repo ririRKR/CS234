@@ -8,6 +8,7 @@ class Room{
 
   void displayRoom(){
     //if(floor!=null)image(floor, 0, 0);
+    textAlign(CENTER);
     background(0);
     for(Object o: objects){
       o.display();

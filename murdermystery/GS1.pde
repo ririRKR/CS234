@@ -9,15 +9,15 @@ class GS1 extends Gamestate {
     rosalieProf = loadImage("rosalieprof.png");
     rosalieProf.resize(100, 100);
 
-    rosalie = new NPC("NPC", "Rosalie", rosalieImg, null, new PVector(width*.9, height*.32), 83, 99, #001DD3); // mid left
-    emily = new NPC("NPC", "Emily",  rosalieImg, null,new PVector(width/4, height/4), 30, 43, #881EF5); // top left
-    thalia = new NPC("NPC", "Thalia",  rosalieImg, null,new PVector(width*.9, height*.9), 67, 81, #0C9532); // top mid
-    willow = new NPC("NPC", "Willow",  rosalieImg, null,new PVector(width*.9, height/4), 83, 98, #7E2920); //top right
-    magnolia = new NPC("NPC", "Magnolia", rosalieImg, null, new PVector(width*.35, height*.15), 1, 11, #1ACED6); //mid right
-    nebula = new NPC("NPC", "Nebula",  rosalieImg, null,new PVector(width*3/4, height*3/4), 57, 65, #A28D80); //bot right
-    angeline = new NPC("NPC", "Angeline",  rosalieImg, null,new PVector(width*.2, height/2), 13, 28, #FF2A1F); // bot mid
-    sasha = new NPC("NPC", "Sasha", rosalieImg, null,new PVector(width*.1, height*.9), 45, 54, #D1F2FA); // bot left
-    mcClone = new NPC("NPC", "mcClone",  rosalieImg, null,new PVector(width/2, height/2), 25, 25, 255);//mid
+    rosalie = new NPC("NPC", "Rosalie", new PVector(width*.9, height*.32), 83, 99, #001DD3, false, false); // mid left
+    emily = new NPC("NPC", "Emily", new PVector(width/4, height/4), 30, 43, #881EF5, false, false); // top left
+    thalia = new NPC("NPC", "Thalia", new PVector(width*.9, height*.9), 67, 81, #0C9532, false, false); // top mid
+    willow = new NPC("NPC", "Willow", new PVector(width*.9, height/4), 83, 98, #7E2920, false, false); //top right
+    magnolia = new NPC("NPC", "Magnolia", new PVector(width*.35, height*.15), 1, 11, #1ACED6, false, false); //mid right
+    nebula = new NPC("NPC", "Nebula", new PVector(width*3/4, height*3/4), 57, 65, #A28D80, false, false); //bot right
+    angeline = new NPC("NPC", "Angeline", new PVector(width*.2, height/2), 13, 28, #FF2A1F, false, false); // bot mid
+    sasha = new NPC("NPC", "Sasha", new PVector(width*.1, height*.9), 45, 54, #D1F2FA, false, false); // bot left
+    mcClone = new NPC("NPC", "mcClone", new PVector(width/2, height/2), 25, 25, 255, false, false);//mid
     rosalie.buddy = willow; willow.buddy = rosalie;
     
     mainDoor = new Door(new PVector(width/2, height*.025), 101, "H");
@@ -78,7 +78,6 @@ class GS1 extends Gamestate {
     textAlign(CENTER);
   }
 
-  int peopleTalked;
   PImage hotelFloor, rosalieImg, rosalieProf;
   String lastLine;
 }

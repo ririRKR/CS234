@@ -9,7 +9,7 @@ NPC rosalie, emily, thalia, willow, magnolia, nebula, angeline, sasha, mcClone;
 Door mainDoor, securityDoor;
 Door hotelRoom1, hotelRoom2, hotelRoom3;
 Room centerRoom, rightRoom;
-GS0 gs0; GS1 gs1; GS2 gs2;
+GS0 gs0; GS1 gs1; GS2 gs2; GS3 gs3; GS4 gs4;
 boolean allClosed;
 PImage rightArrow;
 void setup() {
@@ -25,12 +25,16 @@ void setup() {
   Gamestates = new ArrayList<Gamestate>();
   gs0 = new GS0(mc, loadDialogue("GS0.txt"));
   gs1 = new GS1(mc, loadDialogue("GS1.txt"), "It's getting late. I should see if anyone has found anything.");
-  gs2 = new GS2(mc, loadDialogue("GS1.txt"));
+  gs2 = new GS2(mc, loadDialogue("GS2.txt"));
+  gs3 = new GS3(mc, loadDialogue("GS3.txt"));
+  gs4 = new GS4(mc, loadDialogue("GS3.txt"));
   //gs3 = new GS3(mc, loadDialogue("GS2.txt"));
-  Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2);
-  cgs = 2;
+  Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2); Gamestates.add(gs3); Gamestates.add(gs4);
+  cgs = 4;
   allClosed = true;
   //display the .gamestate.get (last line), new variable for last gamestate
+  
+  //what a prestigious career
 }
 
 void draw() {
@@ -62,9 +66,9 @@ void mouseClicked() {
     }
 
   if(notOpened) checkDistance();
-  if (cgs==0) {
+  if (cgs==0 || cgs == 3) {
     Gamestates.get(cgs).dialogueNumber++;
-  } else if (cgs >0) {
+  } else {
     for (Object o : Gamestates.get(cgs).currentRoom.objects) { //per room
       if (o.opened) {
         Gamestates.get(cgs).incrementDialogueNumber();
@@ -77,16 +81,9 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-  boolean notOpened = true;
   Gamestate currentGS = Gamestates.get(cgs);
-  for (Object o : currentGS.currentRoom.objects) {
-    if (o.opened == true) {
-      notOpened = false;
-      break;
-    }
-  }
   if (cgs!=0) {
-    if (notOpened == true) {
+    if (nothingOpened()) {
       if (key == 'w') {
         mc.move("UP");
       } else if (key == 's') {
@@ -110,12 +107,21 @@ void keyPressed() {
       }
     }
   }
+  
+  if(keyCode == TAB){
+    if(!nothingOpened()){
+      for(Object o: Gamestates.get(cgs).currentRoom.objects){
+        if(o.type.equals("BOOK")) o.opened = false;
+      }
+    }
+  }
+  
 }
 
 void checkDistance() {
   for (Object o : Gamestates.get(cgs).currentRoom.objects) {
     if (dist(mouseX, mouseY, o.pos.x, o.pos.y)<30) {
-      if (o.getType().equals("BOOK") || o.getType().equals("NPC")) {
+      if (o.getType().equals("BOOK") || o.getType().equals("NPC") || o.getType().equals("DOOR")) {
         o.opened = true;
         o.pageNumber = 0;
       }
@@ -124,12 +130,29 @@ void checkDistance() {
   }
 }
 
+
+boolean nothingOpened(){
+ boolean notOpened = true;
+  Gamestate currentGS = Gamestates.get(cgs);
+  for (Object o : currentGS.currentRoom.objects) {
+    if (o.opened == true) {
+      notOpened = false;
+      break;
+    }
+  }
+  return notOpened;
+}
+
 void changeGS() {
   if (cgs==0 && Gamestates.get(cgs).dialogueNumber == 6) {
     cgs++;
-  } else if(cgs!=0 && Gamestates.get(cgs).checkTalked() == true){
+  } else if(cgs==2 && Gamestates.get(cgs).dialogueNumber == 0 && nothingOpened()){
     cgs++;
-  }
+  } else if(cgs==3 && Gamestates.get(cgs).dialogueNumber == 11 && nothingOpened()){
+    cgs++;
+  } else if(cgs==1 && Gamestates.get(cgs).checkTalked() == true){
+    cgs++;
+  } 
 }
 
 ArrayList<Dialogue> loadDialogue(String filename) {

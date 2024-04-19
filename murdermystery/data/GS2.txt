@@ -8,5 +8,5 @@ Emi=Great! I was wondering if we were going to be able to open those.
 Tha=Can we go back to the hotel rooms? I’m tired…
 Sas=I’m going to stay here, but I don’t think it’s a problem if anyone wants to go back.
 mcN=I’m going to go to bed too.
-Ros=I’ll walk you back to your dorm.
+Ros=I’ll walk you back to your room.
  = 

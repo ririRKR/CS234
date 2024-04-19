@@ -1,6 +1,6 @@
 class Door extends NPC{
   Door(PVector posIn, int dialogueStartIn, String doorTypeIn){
-    super("DOOR", "DOOR", null, null, posIn, dialogueStartIn, dialogueStartIn, #674C17); 
+    super("DOOR", "DOOR", posIn, dialogueStartIn, dialogueStartIn, #674C17, false, false); 
     pos = posIn;
     doorType = doorTypeIn;
     beenClicked = true;

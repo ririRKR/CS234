@@ -1,13 +1,12 @@
 class NPC extends Object {
-  NPC(String type, String nameIn, PImage spriteIn, PImage talkImgIn, PVector startPos, int dialogueStartIn, int dialogueEndIn, color fillIn) {
+  NPC(String type, String nameIn, PVector startPos, int dialogueStartIn, int dialogueEndIn, color fillIn, boolean beenClickedIn, boolean startOpenIn) {
     super(type, startPos);
     fill = fillIn;
     dialogueStart = dialogueStartIn;
     dialogueEnd = dialogueEndIn;
-    beenClicked = false;
+    beenClicked = beenClickedIn;
+    opened = startOpenIn;
     name = nameIn;
-    sprite = spriteIn;
-    talkImg = talkImgIn;
   }
 
   void open() {
@@ -29,6 +28,11 @@ class NPC extends Object {
   }
  
  
+  void remakePosition(PVector posIn, int startD, int endD){
+    pos = posIn;
+    dialogueStart = startD;
+    dialogueEnd = endD;
+  }
 
   int getDialogueStart() {
     return dialogueStart;
@@ -41,6 +45,5 @@ class NPC extends Object {
   color fill;
   int dialogueStart, dialogueEnd;
   String name;
-  PImage sprite, talkImg;
   //NPC buddy;
 }

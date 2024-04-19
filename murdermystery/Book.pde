@@ -1,13 +1,14 @@
 class Book extends Object{
-  Book(ArrayList<Page> pagesIn, PVector startPos) {
+  Book(String bookTitleIn, ArrayList<Page> pagesIn, PVector startPos) {
     super("BOOK", startPos);
     pages = pagesIn;
     pageNumber = 0;
+    bookTitle = bookTitleIn;
     
   }
 
   void open() {
-    pages.get(pageNumber).display(pageNumber);
+    pages.get(pageNumber).display(pageNumber, bookTitle);
   }
 
   void incPageNumber() {
@@ -25,6 +26,7 @@ class Book extends Object{
  
 
   ArrayList<Page> pages;
+  String bookTitle;
 }
 
 class Page {
@@ -32,7 +34,7 @@ class Page {
     text = textIn;
   }
 
-  void display(int pageN) {
+  void display(int pageN, String bookTitleIn) {
     fill(255);
     rectMode(CENTER);
     textAlign(LEFT);
@@ -42,7 +44,7 @@ class Page {
 
     if (pageN==0) {
       textSize(50);
-      text("Evidence 1", width*.27, height*.23);
+      text(bookTitleIn, width*.27, height*.23);
       textSize(20);
       text(text, 450, 525, 400, 600);
     } else {
@@ -50,6 +52,7 @@ class Page {
       text(text, 450, 450, 400, 600);
       //text(text, width*.275, height*.2, -100, 600);
     }
+    textAlign(CENTER);
   }
 
   String text;
