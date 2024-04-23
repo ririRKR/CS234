@@ -17,7 +17,7 @@ class Gamestate {
     textAlign(CENTER);
     rectMode(CORNER);
     for (Object o : currentRoom.objects) {
-      if (o.opened) {
+      if (o.opened &&o.type!="BOOK") {
         if (!o.beenClicked) { //and never been clicked before
           if (dialogueNumber==1) dialogueNumber=o.getDialogueStart();
           if (dialogueNumber == o.getDialogueEnd()) { //o.friend.getDialogueEnd() ///friend object in constructor, sets them both to true
@@ -59,6 +59,8 @@ class Gamestate {
     if (dIn.thinking) {
       fill(#C6EEF5);
     } else if(dIn.getNamee().equals(" ")) fill(#84988D);
+      else if(dIn.getNamee().equals("  ")) fill(#E3122B);
+      else if(dIn.getNamee().equals("   ")) fill(#674C17);
     else fill(255);
     String speech = dIn.getSpeech();
     if (frameCount%2==0 && current<speech.length()) {

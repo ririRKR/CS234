@@ -1,0 +1,13 @@
+int=*DING DING DING*
+int=This is the curfew reminder. It is 10:50 PM, so you have 10 minutes to get back to your hotel room.
+mcT=That woke me up…hopefully I can…go back to sleep…
+ = 
+com=...The next morning...
+int=Good morning! It is now 8:00 AM. Time to wake up!
+mcN=I’m so tired…really couldn’t sleep last night.
+doo=*knock knock*
+mcN=Who’s there?
+Ros=It’s Rosalie! Could you come open the door please?
+mcN=Is something wrong?
+Ros=Nope. Everyone is meeting in the lobby, I think a new room opened up.
+mcN=On my way!

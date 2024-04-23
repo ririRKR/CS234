@@ -9,7 +9,7 @@ NPC rosalie, emily, thalia, willow, magnolia, nebula, angeline, sasha, mcClone;
 Door mainDoor, securityDoor;
 Door hotelRoom1, hotelRoom2, hotelRoom3;
 Room centerRoom, rightRoom;
-GS0 gs0; GS1 gs1; GS2 gs2; GS3 gs3; GS4 gs4;
+GS0 gs0; GS1 gs1; GS2 gs2; GS3 gs3; GS4 gs4; GS5 gs5;
 boolean allClosed;
 PImage rightArrow;
 void setup() {
@@ -28,8 +28,9 @@ void setup() {
   gs2 = new GS2(mc, loadDialogue("GS2.txt"));
   gs3 = new GS3(mc, loadDialogue("GS3.txt"));
   gs4 = new GS4(mc, loadDialogue("GS3.txt"));
+  gs5 = new GS5(mc, loadDialogue("GS5.txt"));
   //gs3 = new GS3(mc, loadDialogue("GS2.txt"));
-  Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2); Gamestates.add(gs3); Gamestates.add(gs4);
+  Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2); Gamestates.add(gs3); Gamestates.add(gs4); Gamestates.add(gs5);
   cgs = 4;
   allClosed = true;
   //display the .gamestate.get (last line), new variable for last gamestate
@@ -66,7 +67,7 @@ void mouseClicked() {
     }
 
   if(notOpened) checkDistance();
-  if (cgs==0 || cgs == 3) {
+  if (cgs==0 || cgs == 3 || cgs == 5) {
     Gamestates.get(cgs).dialogueNumber++;
   } else {
     for (Object o : Gamestates.get(cgs).currentRoom.objects) { //per room
@@ -111,7 +112,7 @@ void keyPressed() {
   if(keyCode == TAB){
     if(!nothingOpened()){
       for(Object o: Gamestates.get(cgs).currentRoom.objects){
-        if(o.type.equals("BOOK")) o.opened = false;
+        if(o.type.equals("BOOK")) {o.opened = false; o.beenClicked = true;}
       }
     }
   }
@@ -148,11 +149,13 @@ void changeGS() {
     cgs++;
   } else if(cgs==2 && Gamestates.get(cgs).dialogueNumber == 0 && nothingOpened()){
     cgs++;
-  } else if(cgs==3 && Gamestates.get(cgs).dialogueNumber == 11 && nothingOpened()){
+  } else if(cgs==3 && Gamestates.get(cgs).dialogueNumber == 11){
     cgs++;
   } else if(cgs==1 && Gamestates.get(cgs).checkTalked() == true){
     cgs++;
-  } 
+  } else if(cgs==4 && Gamestates.get(cgs).checkTalked() == true){
+    cgs++;
+  }
 }
 
 ArrayList<Dialogue> loadDialogue(String filename) {
@@ -199,6 +202,10 @@ String returnName(String nameIn) {
     name = "You";
   } else if(nameIn.equals("Tha")){
     name = "Thalia";
+  } else if(nameIn.equals("int")){
+    name = "  ";
+  } else if(nameIn.equals("doo")){
+    name = "   ";
   }
   return name;
 }

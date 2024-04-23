@@ -7,7 +7,13 @@ class Book extends Object{
     
   }
 
+  void display(){
+    fill(#226F71);
+    stroke(0);
+    rect(pos.x, pos.y-width*.02, width*.04, height*.06);
+  }
   void open() {
+    beenClicked = false;
     pages.get(pageNumber).display(pageNumber, bookTitle);
   }
 
