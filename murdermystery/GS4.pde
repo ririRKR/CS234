@@ -8,7 +8,7 @@ class GS4 extends Gamestate {
     rulePages.add(new Page("*Curfew is from 11PM to 7AM                           *Destruction of security cameras is not allowed.                               *Rules are subject to change at any time.                            *If they are changed, you will be notified."));
     rules = new Book("Hotel Rules", rulePages, new PVector(width*3/4, height/2));
 
-    centerRoom =  new Room("Hotel Room 262", hotelFloor, null, null, null, null);
+    centerRoom =  new Room("Room 262", hotelFloor, null, null, null, null);
     centerRoom.objects.add(rules);
     
     rooms.add(centerRoom); 

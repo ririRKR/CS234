@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 Player mc;
 Book keyCardX;
 Object keycard;
@@ -6,12 +8,13 @@ ArrayList<Object> GS0objects;
 ArrayList<Gamestate> Gamestates;
 int cgs; // current game state
 NPC rosalie, emily, thalia, willow, magnolia, nebula, angeline, sasha, mcClone;
-Door mainDoor, securityDoor;
+Door mainDoor, securityDoor, kitchenDoor, labDoor;
 Door hotelRoom1, hotelRoom2, hotelRoom3;
-Room centerRoom, rightRoom;
-GS0 gs0; GS1 gs1; GS2 gs2; GS3 gs3; GS4 gs4; GS5 gs5;
+Room centerRoom, rightRoom, leftRoom;
+GS0 gs0; GS1 gs1; GS2 gs2; GS3 gs3; GS4 gs4; GS5 gs5; GS6 gs6; GS7 gs7;
 boolean allClosed;
 PImage rightArrow;
+SoundFile music, intercom;
 void setup() {
   size(900, 900);
   
@@ -29,18 +32,30 @@ void setup() {
   gs3 = new GS3(mc, loadDialogue("GS3.txt"));
   gs4 = new GS4(mc, loadDialogue("GS3.txt"));
   gs5 = new GS5(mc, loadDialogue("GS5.txt"));
+  gs6 = new GS6(mc, loadDialogue("GS6.txt"));
+  gs7 = new GS7(mc, loadDialogue("GS7.txt"));
   //gs3 = new GS3(mc, loadDialogue("GS2.txt"));
   Gamestates.add(gs0); Gamestates.add(gs1); Gamestates.add(gs2); Gamestates.add(gs3); Gamestates.add(gs4); Gamestates.add(gs5);
+  Gamestates.add(gs6); Gamestates.add(gs7);
   cgs = 4;
   allClosed = true;
   //display the .gamestate.get (last line), new variable for last gamestate
   
+  music = new SoundFile(this, "murdermysterymusic2.mp3");
+  music.amp(.3);
+  intercom = new SoundFile(this, "intercom.wav");
+  intercom.amp(.7);
+  
+  music.loop();
   //what a prestigious career
 }
 
 void draw() {
+
   Gamestates.get(cgs).display();
   changeGS();
+  
+
 }
 
 
@@ -73,11 +88,20 @@ void mouseClicked() {
     for (Object o : Gamestates.get(cgs).currentRoom.objects) { //per room
       if (o.opened) {
         Gamestates.get(cgs).incrementDialogueNumber();
+      
       }
     }
+    
   }
 
 
+  
+   Gamestate c = Gamestates.get(cgs);
+       
+     ArrayList<Dialogue> dA = c.dialogues;
+     int cdn = c.dialogueNumber;
+     if(dA.get(cdn).getNamee().equals("  ")) {println("HI"); intercom.play();}
+   
   
 }
 
@@ -155,6 +179,12 @@ void changeGS() {
     cgs++;
   } else if(cgs==4 && Gamestates.get(cgs).checkTalked() == true){
     cgs++;
+  } else if(cgs==5 && Gamestates.get(cgs).dialogueNumber == 12){
+    cgs++;
+  } else if(cgs==6 && Gamestates.get(cgs).dialogueNumber == 18){
+    cgs++;
+  } else if(cgs == 7 && Gamestates.get(cgs).dialogueNumber == 29){
+    cgs++;
   }
 }
 
@@ -182,7 +212,9 @@ String returnName(String nameIn) {
   String name = "";
   if (nameIn.equals("Ros")) {
     name = "Rosalie";
-  } else if (nameIn.equals("Neb")) {
+  } else if(nameIn.equals("RoX")){
+    name = "RosalieOffScreen";
+  }else if (nameIn.equals("Neb")) {
     name = "Nebula";
   } else if (nameIn.equals("cen")) {
     name = " ";

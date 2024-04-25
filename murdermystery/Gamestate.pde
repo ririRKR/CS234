@@ -38,7 +38,11 @@ class Gamestate {
     if (dialogueNumber!=0) {
       textSize(25);
       displayTalker(checkNPC(dialogues.get(dialogueNumber)));
-      text(rollingText(dialogues.get(dialogueNumber)), width*.175, height*3/4, width*600/900, height*400/900);
+      if(dialogues.get(dialogueNumber).getNamee().equals("  ")){ //if the current speaker is the intercom
+        text(rollingText(dialogues.get(dialogueNumber)), width*.175, height*.1, width*600/900, height*400/900);
+      } else {
+        text(rollingText(dialogues.get(dialogueNumber)), width*.175, height*3/4, width*600/900, height*400/900);
+      }
     }
   }
   void aDisplay() {
@@ -61,6 +65,7 @@ class Gamestate {
     } else if(dIn.getNamee().equals(" ")) fill(#84988D);
       else if(dIn.getNamee().equals("  ")) fill(#E3122B);
       else if(dIn.getNamee().equals("   ")) fill(#674C17);
+      else if(dIn.getNamee().equals("RosalieOffScreen")) fill(#001DD3);
     else fill(255);
     String speech = dIn.getSpeech();
     if (frameCount%2==0 && current<speech.length()) {

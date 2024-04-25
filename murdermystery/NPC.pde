@@ -20,7 +20,7 @@ class NPC extends Object {
     imageMode(CENTER);
     //image(sprite, pos.x, pos.y);
     if(!name.substring(0, 1).equals("x")) circle(pos.x, pos.y, 50);
-    else {rectMode(CENTER); rect(pos.x, pos.y, 100, 50); rectMode(CENTER);}
+    else {rectMode(CENTER); rect(pos.x, pos.y, 100, 50); } //deleted a rectmode center in here
     fill(255);
     textSize(40);
     if(!name.substring(0, 1).equals("x")) text(name.substring(0, 1), pos.x, pos.y+15);
